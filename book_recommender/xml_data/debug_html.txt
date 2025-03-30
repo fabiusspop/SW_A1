@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html
+  class="light-theme"
+  lang="en"
+>
+  <head><script
+  defer
+  src="https://assets-cdn.reedsy.com/libs/analytics-manager/0.0.4/reedsy-analytics-manager.js"
+  type="text/javascript"
+></script>
+
+    <title>100 Books to Read Before You Die | Reedsy Discovery</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover"/>
+    <meta name="description" content="It&#39;s morbid, but have you ever wondered what books to read before you die? Start with this list of 100 must-read books.">
+
+
+    <!-- Ahrefs -->
+    <meta name="ahrefs-site-verification" content="c2ed743569ffbae45f600cb0e778ed1c1e515fafc6385b803c93d1174764dc5d">
+
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/favicon-2b731050ecbe4a619c1dd2f0d1dafb2e0758919307c0def8e1572afa309af8cf.ico" />
+<link rel="icon" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/favicon-64x64-4397dfc91e3c6a7b6056351df25a2cb078ff0dc8dfc02cf1adf0dd67a0f9cd45.png" sizes="64x64" />
+<link rel="icon" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/favicon-32x32-e8a589d08dad9fd8b418e97b9bc341ca1bab3ad022c87e5beb248b8c948f1edb.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/favicon-16x16-58b2687691e3203f2779e17f69a7e771a0167506136cbd3f3e64ab7b74fb03fe.png" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/apple-touch-icon-57x57-e5d2fb4aaa243b723128ad9f01a81fe3019e74031d4267b452fbcb306c65e47c.png" />
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/apple-touch-icon-72x72-c79e1abfaff1b5a0e040f509637f93d5858e891f11c1960362ed40779ea1827f.png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/apple-touch-icon-76x76-98572b20adb3cb450981f5e0e5b19ede6f860733e525368084711f29ee8f3342.png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/apple-touch-icon-114x114-14821213d0aa186da0204edc7b65334b2996dc161e971706c672f68ef0365658.png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/apple-touch-icon-120x120-76c0d581a7665d62f750bbb666b5bd74d8dfef404504c2c2b3b629c2dee17e40.png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/apple-touch-icon-144x144-9631a66f26e14c26e8e249c9b63e0453c25144c2b15a8a41bab758a0314e13cf.png" sizes="144x144" />
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://assets-cdn.reedsy.com/discovery/assets/favicon/apple-touch-icon-152x152-15e0c94db2d6cd5f32f8185b5f300b0101f1b5e7633557638bf3c20a8727a486.png" sizes="152x152" />
+
+
+    <link rel="publisher" href="https://plus.google.com/b/109848060006535085342/+Reedsy" />
+    <link rel="canonical" href="https://reedsy.com/discovery/blog/best-books-to-read-in-a-lifetime">
+
+    
+
+    <!-- Open graph -->
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="100 Books to Read Before You Die">
+<meta property="og:site_name" content="Discovery">
+<meta property="og:url" content="https://reedsy.com/discovery/blog/best-books-to-read-in-a-lifetime">
+<meta property="og:description" content="It&#39;s morbid, but have you ever wondered what books to read before you die? Start with this list of 100 must-read books.">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image" content="https://images-cdn.reedsy.com/discovery/post/19/featured_image/large_6b224b3c5b9c4c379eee21f4a3c9be06eef6ba8b.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+
+
+    <!-- preconnect -->
+    <link href="https://www.googletagmanager.com" rel="preconnect">
+
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="lOlMDFLBoTvx_ndLird5XTgV4bEstvqsF7DYEjfPNtj60jm76QqsZ7FyRAtle9bRf1fzSqhwsUYdC17NRAxg3Q" />
+
+    
+
+      <script src="https://assets-cdn.reedsy.com/discovery/vite/assets/blog-public-app-_0kIYfQU.js" crossorigin="anonymous" type="module"></script><link rel="modulepreload" href="https://assets-cdn.reedsy.com/discovery/vite/assets/vue.esm-bundler-C8BOX-bJ.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://assets-cdn.reedsy.com/discovery/vite/assets/reedsy-exit-modal-C1lSR-mR.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://assets-cdn.reedsy.com/discovery/vite/assets/search-Din3TlKd.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://assets-cdn.reedsy.com/discovery/vite/assets/errors-B4ks6Tfa.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://assets-cdn.reedsy.com/discovery/vite/assets/reedsy-modals.lite-Dms4t2Bp.js" as="script" crossorigin="anonymous"><link rel="stylesheet" href="https://assets-cdn.reedsy.com/discovery/vite/assets/blog-public-app-BDmwC3pt.css" media="screen" />
+<link rel="stylesheet" href="https://assets-cdn.reedsy.com/discovery/vite/assets/reedsy-exit-modal-CgEeODk0.css" media="screen" />
+<link rel="stylesheet" href="https://assets-cdn.reedsy.com/discovery/vite/assets/search-BMYFRiOF.css" media="screen" />
+<link rel="stylesheet" href="https://assets-cdn.reedsy.com/discovery/vite/assets/reedsy-modals-CIrnAdN6.css" media="screen" />
+
+        <link rel="preload" as="image" href="https://images-cdn.reedsy.com/discovery/post/19/featured_image/medium_6b224b3c5b9c4c379eee21f4a3c9be06eef6ba8b.jpg">
+
+  <script type="text/javascript">
+  window.$crisp=[];
+  window.CRISP_WEBSITE_ID="8582e868-5611-4536-8897-51c0c51cc840";
+  (function(){
+    d=document;
+    s=d.createElement("script");
+    s.src="https://client.crisp.chat/l.js";
+    s.async=1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+</script>
+</head>
+
+  <body
+    class=""
+    data-page-uid="discovery_blog_posts_show_19"
+    data-page-title="100 Books to Read Before You Die | Reedsy Discovery "
+  >
+        <script type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://reedsy.com/discovery/blog/best-books-to-read-in-a-lifetime"
+  },
+  "headline": "100 Books to Read Before You Die",
+  "image": [
+    "https://images-cdn.reedsy.com/discovery/post/19/featured_image/medium_6b224b3c5b9c4c379eee21f4a3c9be06eef6ba8b.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/136/image/medium_fe46c5759b178c9d46b0278f3f913055efa04b15.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/137/image/medium_aaa3f68f52fe136202e9f9f03326a0a29fb55a9b.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/138/image/medium_9d607a51bb71f8a7aa1629275a4674da825b4982.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/139/image/medium_b99410c2b1350fb7f8954e32a171b74b86d5bdc7.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/140/image/medium_1c2893c0cd8ab110317939d63aaa1a2db7eb6394.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/141/image/medium_0283d040092f4a9b73ef48d9782c07bdd34fe2ca.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/142/image/medium_8960e410ebe504cca1c83a7ce35087cdd44e3c2e.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/143/image/medium_47675180260a18c0fe00f678e417cb08e2c639a5.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/144/image/medium_36b56e91af62bd4c6fbc448dc30c814ec249ac45.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/145/image/medium_71ad48b2c2bfbf15c25a9e2c50b31586046ec5bf.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/146/image/medium_679e7f4c2bb7c1e6897a7fd13231a2ae05e057ab.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/147/image/medium_720d146d41d4df35572828506395e3cd480bdad9.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/148/image/medium_fff642597c0932150fa84ed4555ec3b9a82f84e4.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/149/image/medium_81dc916b00779c4909f35f799e32fd7dd140f22e.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/150/image/medium_760f92adf3322fe22c4b32b120516fc59102de58.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/151/image/medium_eda9f06cad6cef698fa8e918692b0727a14dd3d3.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/152/image/medium_97c3be19a66358d6a4bb7fcc7577bd009bdd4f49.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/153/image/medium_6598b7c87761e05234db1c68ff17849c3a3b9e85.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/154/image/medium_58a06c772fe3fe3235395124da311199140727e7.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/155/image/medium_3a991b184cad0cccb15818f28ce0e04663cdddbc.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/156/image/medium_a71ddc2de779a34ffaaec1edac494d7378ae7364.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/157/image/medium_9dc21cf887797cde4ec56a305cdb1a8516509df8.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/158/image/medium_d53db44e561a1827bd443f89d637e051e017b696.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/159/image/medium_1a832621e13d4c25c94e179f921e8c922f54f8f6.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/160/image/medium_9766006649ca2fca9fe7933442ff4cb240be57da.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/161/image/medium_7f6e57ff61160a1616412ad5866b66f7edf9fa91.jpg",
+    "https://images-cdn.reedsy.com/discovery/image/162
