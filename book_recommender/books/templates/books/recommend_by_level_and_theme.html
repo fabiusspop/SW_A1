@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Ex 6 - book recommendations by reading level</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recommend by title and theme</title>
     <style>
       table {
         border-collapse: collapse;
@@ -28,6 +30,7 @@
   <body>
     <h1>Book recommendations for {{ user.name }} {{ user.surname }}</h1>
     <p>Reading level: {{ user.reading_level }}</p>
+    <p>Preferred theme: {{ user.preferred_theme }}</p>
 
     {% if books %}
     <h2>Recommended Books</h2>
@@ -35,7 +38,7 @@
       <tr>
         <th>Title</th>
         <th>Themes</th>
-        <th>Reading lvels</th>
+        <th>Reading levels</th>
       </tr>
       {% for book in books %}
       <tr>

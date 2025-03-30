@@ -24,4 +24,5 @@ urlpatterns = [
     path('add_book/', views.add_book, name = 'add_book'),
     path('add_user/', views.add_user, name = 'add_user'),
     path('recommend_by_level/', views.recommend_by_level, name = 'recommend_by_level'),
+    path('recommend_by_level_and_theme/', views.recommend_by_level_and_theme, name = 'recommend_by_level_and_theme'),
 ]
