@@ -1,0 +1,50 @@
+<!-- books/templates/books/book_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex. 3 - books list</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>All books</h1>
+    
+    {% if books %}
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Themes</th>
+                <th>Reading levels</th>
+            </tr>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.themes|join:", " }}</td>
+                    <td>{{ book.reading_levels|join:", " }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No books were found</p>
+    {% endif %}
+</body>
+</html>
