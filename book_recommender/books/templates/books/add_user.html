@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex 5 - add user</title>
+    <style>
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .errorlist {
+            color: red;
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add a New User</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <ul class="errorlist">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <div>
+            <label for="{{ form.name.id_for_label }}">Name:</label>
+            {{ form.name }}
+            {% if form.name.errors %}
+                <ul class="errorlist">
+                    {% for error in form.name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.surname.id_for_label }}">Surname:</label>
+            {{ form.surname }}
+            {% if form.surname.errors %}
+                <ul class="errorlist">
+                    {% for error in form.surname.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.reading_level.id_for_label }}">Reading Level:</label>
+            {{ form.reading_level }}
+            {% if form.reading_level.errors %}
+                <ul class="errorlist">
+                    {% for error in form.reading_level.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.preferred_theme.id_for_label }}">Preferred Theme:</label>
+            {{ form.preferred_theme }}
+            {% if form.preferred_theme.errors %}
+                <ul class="errorlist">
+                    {% for error in form.preferred_theme.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <button type="submit">Add User</button>
+    </form>
+    
+    <p><a href="{% url 'book_list' %}">return to book list</a></p>
+</body>
+</html>
