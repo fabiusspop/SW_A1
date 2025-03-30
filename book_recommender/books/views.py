@@ -113,3 +113,11 @@ def recommend_by_level_and_theme(request):
         'user': user,
         'books': recommended_books
     })
+
+def display_book_details(request, title):
+    book = get_book_by_title(title)
+    
+    if not book:
+        return render(request, 'books/no_book.html')
+    
+    return render(request, 'books/book_details.html', {'book': book})

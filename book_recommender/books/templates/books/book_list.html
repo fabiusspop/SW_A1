@@ -1,54 +1,85 @@
 <!-- books/templates/books/book_list.html -->
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Ex. 3 - books list</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .button {
+        text-decoration: none;
+        background-color: #4caf50;
+        text-align: center;
+        color: white;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem;
+        display: inline-block;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      .actions {
+        text-align: center;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>All books</h1>
-    
+
     {% if books %}
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Themes</th>
-                <th>Reading levels</th>
-            </tr>
-            {% for book in books %}
-                <tr>
-                    <td>{{ book.title }}</td>
-                    <td>{{ book.themes|join:", " }}</td>
-                    <td>{{ book.reading_levels|join:", " }}</td>
-                </tr>
-            {% endfor %}
-        </table>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Themes</th>
+        <th>Reading levels</th>
+        <th>Actions</th>
+      </tr>
+      {% for book in books %}
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.themes|join:", " }}</td>
+        <td>{{ book.reading_levels|join:", " }}</td>
+        <td class="actions">
+          <a class="button" href="{% url 'book_details' title=book.title %}"
+            >See details</a
+          ></td
+        >
+      </tr>
+      {% endfor %}
+    </table>
     {% else %}
-        <p>No books were found</p>
+    <p>No books were found</p>
     {% endif %}
-    
+
     <p><a href="{% url 'add_book' %}">Add book</a></p>
     <p><a href="{% url 'add_user' %}">Add user</a></p>
-    <p><a href="{% url 'recommend_by_level' %}">Book recommendations by reading level</a></p>
-</body>
+    <p
+      ><a href="{% url 'recommend_by_level' %}"
+        >Book recommendations by reading level</a
+      ></p
+    >
+  </body>
 </html>

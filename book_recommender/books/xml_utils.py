@@ -156,3 +156,27 @@ def get_books_by_reading_level_and_theme(reading_level, theme):
         })
     
     return books
+
+def get_book_by_title(title):
+    xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
+    books_file = os.path.join(xml_dir, 'books.xml')
+    
+    tree = etree.parse(books_file)
+    
+    xpath_query = f"//book[title = '{title}']"
+    book_elements = tree.xpath(xpath_query)
+    
+    if not book_elements:
+        return None
+    
+    book_elem = book_elements[0]
+    
+    title = book_elem.find('title').text
+    themes = [theme.text for theme in book_elem.findall('.//themes/theme')]
+    reading_levels = [level.text for level in book_elem.findall('.//reading_levels/level')]
+    
+    return {
+        'title': title,
+        'themes': themes,
+        'reading_levels': reading_levels
+    }
