@@ -20,3 +20,12 @@ class Book(models.Model):
     
     def __str__(self):
         return self.title
+
+class User(models.Model):
+    name = models.CharField(max_length = 100)
+    surname = models.CharField(max_length = 100)
+    reading_level = models.ForeignKey(ReadingLevel, on_delete = models.CASCADE)
+    preferred_theme = models.ForeignKey(Theme, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name} {self.surname}"
