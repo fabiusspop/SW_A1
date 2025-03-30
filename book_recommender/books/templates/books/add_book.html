@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex 4 - add book</title>
+    <style>
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .errorlist {
+            color: red;
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add a book</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <ul class="errorlist">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <div>
+            <label for="{{ form.title.id_for_label }}">Title:</label>
+            {{ form.title }}
+            {% if form.title.errors %}
+                <ul class="errorlist">
+                    {% for error in form.title.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.theme1.id_for_label }}">Theme 1:</label>
+            {{ form.theme1 }}
+            {% if form.theme1.errors %}
+                <ul class="errorlist">
+                    {% for error in form.theme1.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.theme2.id_for_label }}">Theme 2:</label>
+            {{ form.theme2 }}
+            {% if form.theme2.errors %}
+                <ul class="errorlist">
+                    {% for error in form.theme2.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.level1.id_for_label }}">Reading level 1:</label>
+            {{ form.level1 }}
+            {% if form.level1.errors %}
+                <ul class="errorlist">
+                    {% for error in form.level1.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.level2.id_for_label }}">Reading level 2:</label>
+            {{ form.level2 }}
+            {% if form.level2.errors %}
+                <ul class="errorlist">
+                    {% for error in form.level2.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.level3.id_for_label }}">Reading level 3:</label>
+            {{ form.level3 }}
+            {% if form.level3.errors %}
+                <ul class="errorlist">
+                    {% for error in form.level3.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        
+        <button type="submit">Add</button>
+    </form>
+    
+    <p><a href="{% url 'book_list' %}">Return to book list</a></p>
+</body>
+</html>
