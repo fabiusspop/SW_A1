@@ -1,0 +1,14 @@
+<!ELEMENT books (book*)>
+<!ELEMENT book (title, themes, reading_levels)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT themes (theme, theme)>
+<!ELEMENT theme (#PCDATA)>
+<!ELEMENT reading_levels (level, level, level)>
+<!ELEMENT level (#PCDATA)>
+
+<!ELEMENT users (user*)>
+<!ELEMENT user (name, surname, reading_level, preferred_theme)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT reading_level (#PCDATA)>
+<!ELEMENT preferred_theme (#PCDATA)>
