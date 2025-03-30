@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex 6 - book recommendations by reading level</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book recommendations for {{ user.name }} {{ user.surname }}</h1>
+    <p>Reading level: {{ user.reading_level }}</p>
+    
+    {% if books %}
+        <h2>Recommended Books</h2>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Themes</th>
+                <th>Reading lvels</th>
+            </tr>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.themes|join:", " }}</td>
+                    <td>{{ book.reading_levels|join:", " }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No books matching.</p>
+    {% endif %}
+    
+    <p><a href="{% url 'book_list' %}">Back to book list</a></p>
+</body>
+</html>
