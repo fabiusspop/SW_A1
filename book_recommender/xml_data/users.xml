@@ -1,9 +1,21 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <users>
   <user>
     <name>John</name>
     <surname>Doe</surname>
     <reading_level>Beginner</reading_level>
     <preferred_theme>Fantasy</preferred_theme>
+  </user>
+  <user>
+    <name>Jimmy</name>
+    <surname>Dohn</surname>
+    <reading_level>Beginner</reading_level>
+    <preferred_theme>Horror</preferred_theme>
+  </user>
+  <user>
+    <name>Jackie</name>
+    <surname>Chan</surname>
+    <reading_level>Beginner</reading_level>
+    <preferred_theme>Thriller</preferred_theme>
   </user>
 </users>
