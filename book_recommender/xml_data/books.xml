@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <books>
   <book>
     <title>1984</title>
@@ -240,4 +240,4 @@
       <level>Advanced</level>
     </reading_levels>
   </book>
-</books>
+<book><title>MyBookExample</title><themes><theme>Th1</theme><theme>Th2</theme></themes><reading_levels><level>RL1</level><level>RL2</level><level>RL3</level></reading_levels></book></books>
