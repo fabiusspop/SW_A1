@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django import forms
-from .xml_utils import get_books_from_xml, add_book_to_xml, add_user_to_xml
+
+from .xml_utils import get_books_from_xml, add_book_to_xml, add_user_to_xml, get_books_by_reading_level, get_first_user
 
 # Create your views here.
 
@@ -80,3 +81,19 @@ def add_user(request):
         form = UserForm()
         
     return render(request, 'books/add_user.html', {'form' : form})
+
+def recommend_by_level(request):
+    user = get_first_user()
+    
+    if not user:
+        return render(request, 'books/no_user.html')
+    
+    reading_level = user['reading_level']
+    
+    recommended_books = get_books_by_reading_level(reading_level)
+    
+    
+    return render(request, 'books/recommend_by_level.html', {
+        'user': user,
+        'books': recommended_books
+    })
