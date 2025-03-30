@@ -1,8 +1,7 @@
-<!-- books/templates/books/book_list.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ex. 3 - books list</title>
+    <title>Ex 6 - book recommendations by reading level</title>
     <style>
         table {
             border-collapse: collapse;
@@ -26,14 +25,16 @@
     </style>
 </head>
 <body>
-    <h1>All books</h1>
+    <h1>Book recommendations for {{ user.name }} {{ user.surname }}</h1>
+    <p>Reading level: {{ user.reading_level }}</p>
     
     {% if books %}
+        <h2>Recommended Books</h2>
         <table>
             <tr>
                 <th>Title</th>
                 <th>Themes</th>
-                <th>Reading levels</th>
+                <th>Reading lvels</th>
             </tr>
             {% for book in books %}
                 <tr>
@@ -44,11 +45,9 @@
             {% endfor %}
         </table>
     {% else %}
-        <p>No books were found</p>
+        <p>No books matching.</p>
     {% endif %}
     
-    <p><a href="{% url 'add_book' %}">Add book</a></p>
-    <p><a href="{% url 'add_user' %}">Add user</a></p>
-    <p><a href="{% url 'recommend_by_level' %}">Book recommendations by reading level</a></p>
+    <p><a href="{% url 'book_list' %}">Back to book list</a></p>
 </body>
 </html>

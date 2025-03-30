@@ -72,9 +72,6 @@ def add_user_to_xml(user_data):
     
     preferred_theme = etree.SubElement(user, 'preferred_theme')
     preferred_theme.text = user_data['preferred_theme']
-    
-    # this prints without identation 
-    # tree.write(users_file, pretty_print=True, xml_declaration=True, encoding='utf-8')
 
     # pretty printer to format the output
     xml_string = etree.tostring(root, encoding='utf-8')
@@ -84,3 +81,55 @@ def add_user_to_xml(user_data):
     with open(users_file, 'wb') as f:
         f.write(b'<?xml version="1.0" encoding="UTF-8"?>\n')
         f.write(etree.tostring(root, encoding='utf-8', pretty_print=True))
+        
+        
+def get_first_user():
+    xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
+    users_file = os.path.join(xml_dir, 'users.xml')
+    
+    tree = etree.parse(users_file)
+    
+    user_element = tree.xpath('//user[1]')
+    
+    if not user_element:
+        return None
+    
+    user = user_element[0]
+    
+    name = user.find('name').text
+    surname = user.find('surname').text
+    reading_level = user.find('reading_level').text
+    preferred_theme = user.find('preferred_theme').text
+    
+    return {
+        'name' : name,
+        'surname' : surname,
+        'reading_level' : reading_level,
+        'preferred_theme' : preferred_theme
+    }
+
+
+def get_books_by_reading_level(reading_level):
+    xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
+    books_file = os.path.join(xml_dir, 'books.xml')
+    
+    tree = etree.parse(books_file)
+    
+    
+    # find books where any level element contains the exact reading level
+    xpath_query = f"//book[reading_levels/level = '{reading_level}']"
+    book_elements = tree.xpath(xpath_query)
+    
+    books = []
+    for book_elem in book_elements:
+        title = book_elem.find('title').text
+        themes = [theme.text for theme in book_elem.findall('.//themes/theme')]
+        reading_levels = [level.text for level in book_elem.findall('.//reading_levels/level')]
+        
+        books.append({
+            'title': title,
+            'themes': themes,
+            'reading_levels': reading_levels
+        })
+    
+    return books
