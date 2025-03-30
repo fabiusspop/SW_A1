@@ -108,12 +108,11 @@ def scrape_books():
             book.appendChild(themes_elem)
             
             levels_elem = doc.createElement("reading_levels")
-            
-            for level in reading_levels:
-                level_elem = doc.createElement("level")
-                level_text = doc.createTextNode(level)
-                level_elem.appendChild(level_text)
-                levels_elem.appendChild(level_elem)
+            selected_level = random.choice(reading_levels)
+            level_elem = doc.createElement("level")
+            level_text = doc.createTextNode(selected_level)
+            level_elem.appendChild(level_text)
+            levels_elem.appendChild(level_elem)
             
             book.appendChild(levels_elem)
             

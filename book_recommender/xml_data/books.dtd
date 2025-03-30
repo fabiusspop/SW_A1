@@ -3,7 +3,7 @@
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT themes (theme, theme)>
 <!ELEMENT theme (#PCDATA)>
-<!ELEMENT reading_levels (level, level, level)>
+<!ELEMENT reading_levels (level)>
 <!ELEMENT level (#PCDATA)>
 
 <!ELEMENT users (user*)>
