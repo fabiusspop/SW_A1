@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<users>
+  <user>
+    <name>John</name>
+    <surname>Doe</surname>
+    <reading_level>Beginner</reading_level>
+    <preferred_theme>Fantasy</preferred_theme>
+  </user>
+</users>
