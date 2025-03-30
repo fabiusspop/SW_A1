@@ -50,3 +50,37 @@ def add_book_to_xml(book_data):
         level_elem.text = level
         
     tree.write(books_file, pretty_print=True, xml_declaration=True, encoding='utf-8')
+
+
+def add_user_to_xml(user_data):
+    xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
+    users_file = os.path.join(xml_dir, 'users.xml')
+    
+    tree = etree.parse(users_file)
+    root = tree.getroot()
+    
+    user = etree.SubElement(root, 'user')
+    
+    name = etree.SubElement(user, 'name')
+    name.text = user_data['name']
+    
+    surname = etree.SubElement(user, 'surname')
+    surname.text = user_data['surname']
+    
+    reading_level = etree.SubElement(user, 'reading_level')
+    reading_level.text = user_data['reading_level']
+    
+    preferred_theme = etree.SubElement(user, 'preferred_theme')
+    preferred_theme.text = user_data['preferred_theme']
+    
+    # this prints without identation 
+    # tree.write(users_file, pretty_print=True, xml_declaration=True, encoding='utf-8')
+
+    # pretty printer to format the output
+    xml_string = etree.tostring(root, encoding='utf-8')
+    parser = etree.XMLParser(remove_blank_text=True)
+    root = etree.fromstring(xml_string, parser)
+    
+    with open(users_file, 'wb') as f:
+        f.write(b'<?xml version="1.0" encoding="UTF-8"?>\n')
+        f.write(etree.tostring(root, encoding='utf-8', pretty_print=True))
