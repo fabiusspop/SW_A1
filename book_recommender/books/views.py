@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django import forms
-from .xml_utils import get_books_from_xml, add_book_to_xml
+from .xml_utils import get_books_from_xml, add_book_to_xml, add_user_to_xml
 
 # Create your views here.
 
@@ -51,3 +51,32 @@ def add_book(request):
         form = BookForm()
         
     return render(request, 'books/add_book.html', {'form' : form})
+
+class UserForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True)
+    surname = forms.CharField(max_length=100, required=True)
+    reading_level = forms.ChoiceField(
+        choices = [('Beginner', 'Beginner'), ('Intermediate', 'Intermediate'), ('Advanced', 'Advanced')],
+        required=True
+    )
+    preferred_theme = forms.CharField(max_length=100, required=True)
+    
+def add_user(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        
+        if form.is_valid():
+            user_data = {
+                'name' : form.cleaned_data['name'],
+                'surname' : form.cleaned_data['surname'],
+                'reading_level' : form.cleaned_data['reading_level'],
+                'preferred_theme' : form.cleaned_data['preferred_theme']
+            }
+            
+            add_user_to_xml(user_data)
+            
+            return redirect('book_list')
+    else:
+        form = UserForm()
+        
+    return render(request, 'books/add_user.html', {'form' : form})
