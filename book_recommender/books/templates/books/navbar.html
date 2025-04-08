@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .navbar {
+        background-color: #4caf50;
+        height: 5rem;
+        border-radius: 3rem;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: white;
+        margin: 2rem 0;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: #4caf50;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        background-color: white;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="{% url 'add_book' %}">Add book</a>
+      <a href="{% url 'add_user' %}">Add user</a>
+      <a href="{% url 'book_list' %}">Book list</a>
+      <a href="{% url 'recommend_by_level' %}">Recommended by level</a>
+      <a href="{% url 'recommend_by_level_and_theme'%}"
+        >Recommended by level and theme</a
+      >
+    </div>
+  </body>
+</html>

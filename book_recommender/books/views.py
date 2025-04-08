@@ -5,9 +5,29 @@ from .xml_utils import *
 
 # Create your views here.
 
+class InputUser(forms.Form):
+    name = forms.CharField(max_length=100, required=True)
+
 def book_list(request):
-    books = get_books_from_xml()
-    return render(request, 'books/book_list.html', {'books' : books})
+    
+
+    if request.method == 'POST':
+        form = InputUser(request.POST)
+        if form.is_valid():
+            user_data = {
+                'name' : form.cleaned_data['name']
+            }
+            
+            books, user = get_books_from_xml_by_user(user_data['name'])
+            if not user:
+                return render(request, 'books/no_user.html')
+            
+            form = InputUser() 
+            return render(request, 'books/book_list.html', {'books' : books, 'user' : user, 'form' : form})
+    else:  
+        form = InputUser() 
+        books, user = get_books_from_xml()
+        return render(request, 'books/book_list.html', {'books' : books, 'user' : user, 'form' : form})
 
 class BookForm(forms.Form):
     

@@ -8,10 +8,12 @@ from django.conf import settings
 
 def get_books_from_xml():
     xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
-    books_file = os.path.join(xml_dir, 'books.xml')
-    
+    books_file = os.path.join(xml_dir, 'books.xml')    
     tree = etree.parse(books_file)
     books = []
+
+    user = get_first_user()
+
     
     for book_elem in tree.xpath('//book'):
         title = book_elem.find('title').text 
@@ -24,7 +26,32 @@ def get_books_from_xml():
             "reading_levels" : reading_levels
         })
 
-    return books
+    return books, user
+
+
+def get_books_from_xml_by_user(name):
+    xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
+    books_file = os.path.join(xml_dir, 'books.xml')    
+    tree = etree.parse(books_file)
+    books = []
+
+    user = get_user_by_name(name)
+
+    
+    for book_elem in tree.xpath('//book'):
+        title = book_elem.find('title').text 
+        themes = [theme.text for theme in book_elem.findall('.//themes/theme')]
+        reading_levels = [level.text for level in book_elem.findall('.//reading_levels/level')]
+    
+        books.append({
+            'title' : title,
+            'themes' : themes,
+            "reading_levels" : reading_levels
+        })
+
+    return books, user
+
+
 
 def add_book_to_xml(book_data):
     xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
@@ -100,6 +127,32 @@ def get_first_user():
     surname = user.find('surname').text
     reading_level = user.find('reading_level').text
     preferred_theme = user.find('preferred_theme').text
+    
+    return {
+        'name' : name,
+        'surname' : surname,
+        'reading_level' : reading_level,
+        'preferred_theme' : preferred_theme
+    }
+
+def get_user_by_name(name):
+    xml_dir = os.path.join(settings.BASE_DIR, 'xml_data')
+    users_file = os.path.join(xml_dir, 'users.xml')
+    
+    tree = etree.parse(users_file)
+    
+    xpath_query = f"//user[name = '{name}']"
+    user_elements = tree.xpath(xpath_query)
+    
+    if not user_elements:
+        return None
+    
+    user_elem = user_elements[0]
+    
+    name = user_elem.find('name').text
+    surname = user_elem.find('surname').text
+    reading_level = user_elem.find('reading_level').text
+    preferred_theme = user_elem.find('preferred_theme').text
     
     return {
         'name' : name,
