@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RDF Graph Visualization</title>
+    <link href="{% static 'lib/vis-9.1.2/vis-network.css' %}" rel="stylesheet">
+    <style>
+        #network {
+            width: 100%;
+            height: 800px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h2>Interactive RDF Graph</h2>
+    <div id="network"></div>
+
+    <script src="{% static 'lib/vis-9.1.2/vis-network.min.js' %}"></script>
+
+    <!-- Only use the json.dumps + safe approach -->
+    <script>
+        const nodesData = JSON.parse('{{ nodes_json|escapejs }}');
+        const edgesData = JSON.parse('{{ edges_json|escapejs }}');
+
+        const nodes = new vis.DataSet(nodesData);
+        const edges = new vis.DataSet(edgesData);
+
+        const container = document.getElementById('network');
+        const data = { nodes: nodes, edges: edges };
+        const options = {
+            layout: {
+                hierarchical: {
+                    enabled: true,
+                    direction: 'UD', // UD = top-down, use 'LR' for left-right
+                    sortMethod: 'directed'
+                }
+            },
+            edges: {
+                arrows: 'to',
+                smooth: true
+            },
+            physics: false, // Disable physics for hierarchy
+            interaction: {
+                navigationButtons: true,
+                zoomView: true
+            }
+        };
+
+
+        const network = new vis.Network(container, data, options);
+    </script>
+</body>
+</html>

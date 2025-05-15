@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from books import views
 
 urlpatterns = [
@@ -26,4 +26,8 @@ urlpatterns = [
     path('recommend_by_level/', views.recommend_by_level, name = 'recommend_by_level'),
     path('recommend_by_level_and_theme/', views.recommend_by_level_and_theme, name = 'recommend_by_level_and_theme'),
     path('book_details/<path:title>/', views.display_book_details, name = 'book_details'),
+
+
+    path('rdf-tools/', include('rdf_tools.urls')), 
+
 ]
