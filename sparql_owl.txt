@@ -1,0 +1,43 @@
+queries:
+1) find all users and their names
+SELECT ?user ?userName
+WHERE {
+  ?user rdf:type bk:User .
+  ?user bk:userName ?userName .
+}
+2) find all sf books
+SELECT ?book ?bookTitle
+WHERE {
+  ?book rdf:type bk:Book .
+  ?book bk:bookTitle ?bookTitle .
+  ?book bk:hasBookTheme bk:ScienceFictionTheme .
+}
+3) reading level alice
+SELECT ?levelName
+WHERE {
+  bk:Alice bk:hasReadingLevel ?level .
+  ?level bk:levelName ?levelName .
+}
+4) all books for beginners and titles
+SELECT ?bookTitle
+WHERE {
+  ?book rdf:type bk:Book ;
+        bk:bookTitle ?bookTitle ;
+        bk:isSuitableForReadingLevel ?level .
+  ?level bk:levelName "Beginner" . # Match the literal name
+}
+5) who prefers mystery and his/her reading level
+SELECT ?userName ?levelName
+WHERE {
+  ?user rdf:type bk:User ;
+        bk:userName ?userName ;
+        bk:prefersTheme bk:MysteryTheme ;
+        bk:hasReadingLevel ?readingLevel .
+  ?readingLevel bk:levelName ?levelName .
+}
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bk: <http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#>

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<rdf:RDF 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:bk="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#"
+    xml:base="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2/">
+
+    <!-- 
+    =======================================================================================
+    Individuals for Reading Levels (referenced by Users and Books)
+    These could also be defined within the main ontology, but for a pure instance file,
+    they are needed if not imported.
+    =======================================================================================
+    -->
+    <rdf:Description rdf:about="#BeginnerLevel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+        <bk:levelName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beginner</bk:levelName>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#IntermediateLevel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+        <bk:levelName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intermediate</bk:levelName>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#AdvancedLevel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+        <bk:levelName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Advanced</bk:levelName>
+    </rdf:Description>
+
+    <!-- 
+    =======================================================================================
+    Individuals for Themes (referenced by Users and Books)
+    =======================================================================================
+    -->
+    <rdf:Description rdf:about="#ScienceFictionTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <bk:themeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Science Fiction</bk:themeName>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#MysteryTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <bk:themeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mystery</bk:themeName>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#FantasyTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <bk:themeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fantasy</bk:themeName>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#MurderNovelTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <bk:themeName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Murder Novel</bk:themeName>
+    </rdf:Description>
+
+
+    <!-- 
+    =======================================================================================
+    User Instances
+    Scenario:
+    The user Alice has a reading level of Intermediate and prefers Science Fiction.
+    The user Bob has a reading level of Beginner and prefers Mystery.
+    =======================================================================================
+    -->
+    <rdf:Description rdf:about="#Alice">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+        <bk:userName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alice</bk:userName>
+        <bk:hasReadingLevel rdf:resource="#IntermediateLevel"/>
+        <bk:prefersTheme rdf:resource="#ScienceFictionTheme"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Bob">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+        <bk:userName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bob</bk:userName>
+        <bk:hasReadingLevel rdf:resource="#BeginnerLevel"/>
+        <bk:prefersTheme rdf:resource="#MysteryTheme"/>
+    </rdf:Description>
+
+    <!-- 
+    =======================================================================================
+    Book Instances
+    Scenario:
+    The book "Dune" is a Science Fiction and Fantasy novel suitable for Advanced readers.
+    The book "The Silent Patient" is a Mystery and Murder novel suitable for Intermediate readers.
+    The book "Hunger Games" is a Science Fiction and Fantasy novel for Beginner readers only.
+    =======================================================================================
+    -->
+    <rdf:Description rdf:about="#Dune">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <bk:bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dune</bk:bookTitle>
+        <bk:hasBookTheme rdf:resource="#ScienceFictionTheme"/>
+        <bk:hasBookTheme rdf:resource="#FantasyTheme"/>
+        <bk:isSuitableForReadingLevel rdf:resource="#AdvancedLevel"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#TheSilentPatient">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <bk:bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Silent Patient</bk:bookTitle>
+        <bk:hasBookTheme rdf:resource="#MysteryTheme"/>
+        <bk:hasBookTheme rdf:resource="#MurderNovelTheme"/>
+        <bk:isSuitableForReadingLevel rdf:resource="#IntermediateLevel"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#HungerGames">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <bk:bookTitle rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hunger Games</bk:bookTitle>
+        <bk:hasBookTheme rdf:resource="#ScienceFictionTheme"/>
+        <bk:hasBookTheme rdf:resource="#FantasyTheme"/>
+        <bk:isSuitableForReadingLevel rdf:resource="#BeginnerLevel"/>
+    </rdf:Description>
+
+</rdf:RDF>
