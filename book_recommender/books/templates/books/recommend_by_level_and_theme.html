@@ -28,6 +28,7 @@
     </style>
   </head>
   <body>
+    {% include "books/chat.html" %}
     <h1>Book recommendations for {{ user.name }} {{ user.surname }}</h1>
     <p>Reading level: {{ user.reading_level }}</p>
     <p>Preferred theme: {{ user.preferred_theme }}</p>

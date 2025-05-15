@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    p{
+        margin: 0;
+        padding: 0;
+    }
+
+    .chat {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px 20px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center; 
+      background-color: #f4f4f4;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1000;
+    
+    }
+
+    .prompt-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .prompt-container input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 200px;
+        
+    }
+
+    .prompt-container button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .exit{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .trigger{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .chat-messages {
+    
+      overflow-y: scroll;
+      max-height: 100px;
+      max-width: 400px;
+      margin-bottom: 10px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    .starters-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        max-width: 80%;
+    }
+
+    .starters-container p {
+        border: #ccc 1px solid;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #4caf50;
+        color: white;
+    }
+
+    
+  </style>
+  <body>
+    <div class="trigger">
+      <p>ChatBot</p>
+    </div>
+
+    <div class="chat">
+      <h2>AI Librarian</h1>
+
+      <div class="starters-container">
+        <p>Hi! I'm your AI librarian. How can I help you today?</p>
+        <p>Ask me about book recommendations, authors, or anything else related to books!</p>
+        <p>Ask me about Nicolae Ciuca's book: Un ostas in slujba tarii 😄</p>
+      </div>
+
+      <div class="chat-messages">
+        {% if response %}
+      <p>{{ response }}
+
+       
+      </p>
+      {% endif %}
+
+      This is extra text for testing purposes.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis debitis dolore porro eaque distinctio eius. A nisi rem veniam, optio praesentium labore. Maxime sed vel consequuntur aut qui perspiciatis? Ipsa iusto laudantium similique cumque distinctio fuga. Eligendi amet tempore optio laborum, repudiandae ipsa cum adipisci explicabo reiciendis voluptas modi voluptatem.
+      </div>  
+     
+
+      <div class="prompt-container">
+      <form method="post">
+          <input type="text" id="prompt" name="prompt" />
+          <button type="submit">Send</button>
+      </form>
+    </div>
+
+      <p class="exit">X</p>
+    </div>
+  </body>
+</html>
+    <script>
+        const exit = document.querySelector('.exit');
+        const trigger = document.querySelector('.trigger');
+        const chat = document.querySelector('.chat');
+
+        exit.addEventListener('click', () => {
+            chat.style.display = 'none';
+            trigger.style.display = 'block';
+        });
+
+        trigger.addEventListener('click', () => {
+            chat.style.display = 'flex';
+            trigger.style.display = 'none';
+        });
+
+        
+    </script>
