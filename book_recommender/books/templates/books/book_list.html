@@ -6,7 +6,8 @@
     <style>
       table {
         border-collapse: collapse;
-        width: 100%;
+        width: 90%;
+        margin: 0 auto;
       }
 
       th,
@@ -44,10 +45,49 @@
       .actions {
         text-align: center;
       }
+
+      .my-difficulty {
+        background-color: rgb(243, 243, 95);
+      }
+
+      .default-difficulty {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .name-search-form {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: left;
+      }
+      .name-search-form label {
+        margin-right: 1rem;
+      }
+      .name-search-form input[type="text"] {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
     </style>
   </head>
   <body>
+    {% include "books/navbar.html" %} {% include "books/chat.html" %}
     <h1>All books</h1>
+    <h2>Account {{user.name}}</h2>
+
+    <form action="" method="post" class="name-search-form">
+      {% csrf_token %}
+      <div>
+        <label for="{{ form.name.id_for_label }}">Name:</label>
+        {{ form.name }} {% if form.name.errors %}
+        <ul class="errorlist">
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </form>
 
     {% if books %}
     <table>
@@ -61,7 +101,10 @@
       <tr>
         <td>{{ book.title }}</td>
         <td>{{ book.themes|join:", " }}</td>
-        <td>{{ book.reading_levels|join:", " }}</td>
+        <td
+          class="{% if book.reading_levels.0 == user.reading_level %} my-difficulty {% else %} default-difficulty {% endif %}"
+          >{{ book.reading_levels|join:", " }}</td
+        >
         <td class="actions">
           <a class="button" href="{% url 'book_details' title=book.title %}"
             >See details</a
@@ -73,13 +116,5 @@
     {% else %}
     <p>No books were found</p>
     {% endif %}
-
-    <p><a href="{% url 'add_book' %}">Add book</a></p>
-    <p><a href="{% url 'add_user' %}">Add user</a></p>
-    <p
-      ><a href="{% url 'recommend_by_level' %}"
-        >Book recommendations by reading level</a
-      ></p
-    >
   </body>
 </html>
