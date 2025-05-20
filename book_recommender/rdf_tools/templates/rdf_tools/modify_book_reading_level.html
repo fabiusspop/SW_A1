@@ -1,0 +1,7 @@
+<h1>Modify Reading Level for: {{ book_title }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Level</button>
+</form>
+<p><a href="{% url 'rdf_tools:list_books_rdf' %}">Cancel</a></p>

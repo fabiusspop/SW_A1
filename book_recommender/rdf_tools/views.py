@@ -153,7 +153,7 @@ def rdf_graph_view(request):
 
 
 
-
+# ex 2
 import rdflib
 import json
 from rdflib.extras.external_graph_libs import rdflib_to_networkx_multidigraph
@@ -212,3 +212,130 @@ def rdf_graph_upload_view(request):
 
 
     return render(request, 'rdf_tools/rdf_upload.html')
+
+
+# ex 4
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from rdflib import Graph, Namespace, URIRef, Literal, RDF
+from rdflib.namespace import XSD # Ensure XSD is imported
+
+from .forms import BookRDFForm, ModifyReadingLevelForm
+from .rdf_utils import (
+    load_rdf_graph, save_rdf_graph, BK, 
+    create_book_uri, get_reading_level_uri_by_name, get_theme_uri_by_name
+)
+
+def list_books_rdf(request):
+    g = load_rdf_graph()
+    books_list = []
+    query = """
+    SELECT ?book ?title WHERE {
+        ?book rdf:type bk:Book .
+        ?book bk:bookTitle ?title .
+    } ORDER BY ?title
+    """
+    results = g.query(query, initNs={"bk": BK, "rdf": RDF}) 
+    
+    for row in results:
+        book_uri_str = str(row.book)
+        # Create a slug from the last part of the URI
+        slug = book_uri_str.split('/')[-1].split('#')[-1]
+        books_list.append({'title': str(row.title), 'slug': slug})
+    return render(request, 'rdf_tools/list_books_rdf.html', {'books': books_list})
+
+
+# ex 4 page for each book
+def book_detail_rdf(request, book_slug):
+    g = load_rdf_graph()
+    book_subject_uri = BK[book_slug] # Reconstruct URI from slug
+
+    details = {'uri': str(book_subject_uri), 'title': None, 'themes': [], 'reading_levels': []}
+    
+    # titlu
+    title_results = list(g.objects(subject=book_subject_uri, predicate=BK.bookTitle))
+    if not title_results:
+        return render(request, 'rdf_tools/book_not_found.html', {'book_slug': book_slug})
+    details['title'] = str(title_results[0])
+
+    # theme
+    for theme_uri in g.objects(subject=book_subject_uri, predicate=BK.hasBookTheme):
+        theme_name = str(list(g.objects(subject=theme_uri, predicate=BK.themeName))[0])
+        details['themes'].append(theme_name)
+    
+    # reading lvl
+    for level_uri in g.objects(subject=book_subject_uri, predicate=BK.isSuitableForReadingLevel):
+        level_name = str(list(g.objects(subject=level_uri, predicate=BK.levelName))[0])
+        details['reading_levels'].append(level_name)
+        
+    return render(request, 'rdf_tools/book_detail_rdf.html', {'book': details})
+
+
+
+# Task 3: Add a book
+def add_book_rdf(request):
+    if request.method == 'POST':
+        form = BookRDFForm(request.POST)
+        if form.is_valid():
+            g = load_rdf_graph()
+            title = form.cleaned_data['title']
+            theme_name = form.cleaned_data['theme']
+            level_name = form.cleaned_data['reading_level']
+
+            new_book_s_uri = create_book_uri(title) # URI for the new book subject
+            
+            g.add((new_book_s_uri, RDF.type, BK.Book))
+            g.add((new_book_s_uri, BK.bookTitle, Literal(title, datatype=XSD.string)))
+            
+            # Link to existing Theme and ReadingLevel individuals
+            g.add((new_book_s_uri, BK.hasBookTheme, get_theme_uri_by_name(theme_name)))
+            g.add((new_book_s_uri, BK.isSuitableForReadingLevel, get_reading_level_uri_by_name(level_name)))
+            
+            save_rdf_graph(g)
+            return redirect(reverse('rdf_tools:list_books_rdf'))
+    else:
+        form = BookRDFForm()
+    return render(request, 'rdf_tools/add_book_rdf.html', {'form': form})
+
+# Task 3: Modify a book's reading level
+def modify_book_reading_level(request, book_slug):
+    g = load_rdf_graph()
+    book_subject_uri = BK[book_slug]
+
+    # Get current book title for display
+    book_title = "Book" # Default
+    title_res = list(g.objects(subject=book_subject_uri, predicate=BK.bookTitle))
+    if title_res:
+        book_title = str(title_res[0])
+    else: # Book not found by slug
+         return render(request, 'rdf_tools/book_not_found.html', {'book_slug': book_slug})
+
+
+    if request.method == 'POST':
+        form = ModifyReadingLevelForm(request.POST)
+        if form.is_valid():
+            new_level_name = form.cleaned_data['reading_level']
+            new_level_o_uri = get_reading_level_uri_by_name(new_level_name)
+
+            # Remove all old reading level(s) for this book
+            g.remove((book_subject_uri, BK.isSuitableForReadingLevel, None))
+            # Add the new one
+            g.add((book_subject_uri, BK.isSuitableForReadingLevel, new_level_o_uri))
+            
+            save_rdf_graph(g)
+            return redirect(reverse('rdf_tools:list_books_rdf'))
+    else:
+        # Pre-fill form (optional, for better UX)
+        current_level_name = None
+        current_level_uris = list(g.objects(subject=book_subject_uri, predicate=BK.isSuitableForReadingLevel))
+        if current_level_uris:
+            level_name_res = list(g.objects(subject=current_level_uris[0], predicate=BK.levelName))
+            if level_name_res:
+                current_level_name = str(level_name_res[0])
+        form = ModifyReadingLevelForm(initial={'reading_level': current_level_name} if current_level_name else {})
+        
+    return render(request, 'rdf_tools/modify_book_reading_level.html', {
+        'form': form, 
+        'book_title': book_title,
+        'book_slug': book_slug
+    })

@@ -1,0 +1,7 @@
+<h1>Add Book to RDF</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Book</button>
+</form>
+<p><a href="{% url 'rdf_tools:list_books_rdf' %}">Cancel</a></p>

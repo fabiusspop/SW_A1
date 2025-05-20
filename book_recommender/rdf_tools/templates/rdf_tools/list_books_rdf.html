@@ -1,0 +1,12 @@
+<h1>Books (from RDF)</h1>
+<p><a href="{% url 'rdf_tools:add_book_rdf' %}">Add New Book</a></p>
+<ul>
+    {% for book in books %}
+        <li>
+            <a href="{% url 'rdf_tools:book_detail_rdf' book_slug=book.slug %}">{{ book.title }}</a>
+            (<a href="{% url 'rdf_tools:modify_book_reading_level' book_slug=book.slug %}">Modify Level</a>)
+        </li>
+    {% empty %}
+        <li>No books found.</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2/"
+     xml:base="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-2="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#hasBookTheme -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#hasBookTheme">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#hasReadingLevel -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#hasReadingLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#isSuitableForReadingLevel -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#isSuitableForReadingLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#prefersTheme -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#prefersTheme">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#bookTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#bookTitle">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#levelName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#levelName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#themeName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#themeName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#userName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#userName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#AdvancedLevel -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#AdvancedLevel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+        <untitled-ontology-2:levelName>Advanced</untitled-ontology-2:levelName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Alice -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Alice">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+        <untitled-ontology-2:hasReadingLevel rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#IntermediateLevel"/>
+        <untitled-ontology-2:prefersTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#ScienceFictionTheme"/>
+        <untitled-ontology-2:userName>Alice</untitled-ontology-2:userName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#BeginnerLevel -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#BeginnerLevel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+        <untitled-ontology-2:levelName>Beginner</untitled-ontology-2:levelName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Bob -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Bob">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#User"/>
+        <untitled-ontology-2:hasReadingLevel rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#BeginnerLevel"/>
+        <untitled-ontology-2:prefersTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#MysteryTheme"/>
+        <untitled-ontology-2:userName>Bob</untitled-ontology-2:userName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Dune -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Dune">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <untitled-ontology-2:hasBookTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#FantasyTheme"/>
+        <untitled-ontology-2:hasBookTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#ScienceFictionTheme"/>
+        <untitled-ontology-2:isSuitableForReadingLevel rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#AdvancedLevel"/>
+        <untitled-ontology-2:bookTitle>Dune</untitled-ontology-2:bookTitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#FantasyTheme -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#FantasyTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <untitled-ontology-2:themeName>Fantasy</untitled-ontology-2:themeName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#HungerGames -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#HungerGames">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <untitled-ontology-2:hasBookTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#FantasyTheme"/>
+        <untitled-ontology-2:hasBookTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#ScienceFictionTheme"/>
+        <untitled-ontology-2:isSuitableForReadingLevel rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#BeginnerLevel"/>
+        <untitled-ontology-2:bookTitle>Hunger Games</untitled-ontology-2:bookTitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#IntermediateLevel -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#IntermediateLevel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Reading_Level"/>
+        <untitled-ontology-2:levelName>Intermediate</untitled-ontology-2:levelName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#MurderNovelTheme -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#MurderNovelTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <untitled-ontology-2:themeName>Murder Novel</untitled-ontology-2:themeName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#MysteryTheme -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#MysteryTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <untitled-ontology-2:themeName>Mystery</untitled-ontology-2:themeName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#ScienceFictionTheme -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#ScienceFictionTheme">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Theme"/>
+        <untitled-ontology-2:themeName>Science Fiction</untitled-ontology-2:themeName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#TheSilentPatient -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#TheSilentPatient">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#Book"/>
+        <untitled-ontology-2:hasBookTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#MurderNovelTheme"/>
+        <untitled-ontology-2:hasBookTheme rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#MysteryTheme"/>
+        <untitled-ontology-2:isSuitableForReadingLevel rdf:resource="http://www.semanticweb.org/ursal/ontologies/2025/4/untitled-ontology-2#IntermediateLevel"/>
+        <untitled-ontology-2:bookTitle>The Silent Patient</untitled-ontology-2:bookTitle>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
