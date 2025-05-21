@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <style>
+<style>
     p{
         margin: 0;
         padding: 0;
@@ -26,7 +18,6 @@
       bottom: 10px;
       right: 10px;
       z-index: 1000;
-    
     }
 
     .prompt-container {
@@ -42,7 +33,6 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         width: 200px;
-        
     }
 
     .prompt-container button {
@@ -74,9 +64,8 @@
     }
 
     .chat-messages {
-    
       overflow-y: scroll;
-      max-height: 100px;
+      max-height: 200px;
       max-width: 400px;
       margin-bottom: 10px;
       background-color: white;
@@ -101,62 +90,104 @@
         border-radius: 10px;
         background-color: #4caf50;
         color: white;
+        cursor: pointer;
+    }
+  </style>
+
+<div class="trigger">
+  <p>ChatBot</p>
+</div>
+
+<div class="chat">
+  <h2>AI Librarian</h2>
+
+  <div class="starters-container" id="starters-container">
+    <!-- Starters will be loaded here -->
+  </div>
+
+  <div class="chat-messages" id="chat-messages">
+    <!-- Chat messages will appear here -->
+  </div>  
+
+  <div class="prompt-container">
+    <input type="text" id="prompt" name="prompt" />
+    <button id="send-btn">Send</button>
+  </div>
+
+  <p class="exit">X</p>
+</div>
+
+<script>
+    const exit = document.querySelector('.exit');
+    const trigger = document.querySelector('.trigger');
+    const chat = document.querySelector('.chat');
+    const chatMessages = document.getElementById('chat-messages');
+    const sendBtn = document.getElementById('send-btn');
+    const promptInput = document.getElementById('prompt');
+    const startersContainer = document.getElementById('starters-container');
+
+    exit.addEventListener('click', () => {
+        chat.style.display = 'none';
+        trigger.style.display = 'block';
+    });
+
+    trigger.addEventListener('click', () => {
+        chat.style.display = 'flex';
+        trigger.style.display = 'none';
+        loadStarters();
+    });
+
+    function addMessage(text, sender) {
+        const p = document.createElement('p');
+        p.textContent = (sender === 'user' ? 'You: ' : 'Bot: ') + text;
+        chatMessages.appendChild(p);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    
-  </style>
-  <body>
-    <div class="trigger">
-      <p>ChatBot</p>
-    </div>
-
-    <div class="chat">
-      <h2>AI Librarian</h1>
-
-      <div class="starters-container">
-        <p>Hi! I'm your AI librarian. How can I help you today?</p>
-        <p>Ask me about book recommendations, authors, or anything else related to books!</p>
-        <p>Ask me about Nicolae Ciuca's book: Un ostas in slujba tarii 😄</p>
-      </div>
-
-      <div class="chat-messages">
-        {% if response %}
-      <p>{{ response }}
-
-       
-      </p>
-      {% endif %}
-
-      This is extra text for testing purposes.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis debitis dolore porro eaque distinctio eius. A nisi rem veniam, optio praesentium labore. Maxime sed vel consequuntur aut qui perspiciatis? Ipsa iusto laudantium similique cumque distinctio fuga. Eligendi amet tempore optio laborum, repudiandae ipsa cum adipisci explicabo reiciendis voluptas modi voluptatem.
-      </div>  
-     
-
-      <div class="prompt-container">
-      <form method="post">
-          <input type="text" id="prompt" name="prompt" />
-          <button type="submit">Send</button>
-      </form>
-    </div>
-
-      <p class="exit">X</p>
-    </div>
-  </body>
-</html>
-    <script>
-        const exit = document.querySelector('.exit');
-        const trigger = document.querySelector('.trigger');
-        const chat = document.querySelector('.chat');
-
-        exit.addEventListener('click', () => {
-            chat.style.display = 'none';
-            trigger.style.display = 'block';
+    sendBtn.onclick = async function(e) {
+        e.preventDefault();
+        const prompt = promptInput.value;
+        if (!prompt) return;
+        addMessage(prompt, 'user');
+        promptInput.value = '';
+        const res = await fetch('/api/chat/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({message: prompt})
         });
+        const data = await res.json();
+        addMessage(data.response, 'bot');
+    };
 
-        trigger.addEventListener('click', () => {
-            chat.style.display = 'flex';
-            trigger.style.display = 'none';
-        });
+    function loadStarters() {
+        // Example: get context from page (customize as needed)
+        let context = 'list';
+        let bookTitle = '';
+        if (window.location.pathname.includes('book_details')) {
+            context = 'book';
+            // Try to extract book title from page (customize as needed)
+            const h1 = document.querySelector('h1');
+            if (h1) bookTitle = h1.textContent;
+        }
+        let url = `/api/chat/starters/?context=${context}`;
+        if (bookTitle) url += `&book_title=${encodeURIComponent(bookTitle)}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                startersContainer.innerHTML = '';
+                data.starters.forEach(starter => {
+                    const p = document.createElement('p');
+                    p.textContent = starter;
+                    p.onclick = () => {
+                        promptInput.value = starter;
+                    };
+                    startersContainer.appendChild(p);
+                });
+            });
+    }
 
-        
-    </script>
+    // Load starters on page load if chat is open
+    if (chat.style.display === 'flex') {
+        loadStarters();
+    }
+</script>

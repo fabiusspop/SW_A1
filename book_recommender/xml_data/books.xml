@@ -193,11 +193,22 @@
   <book>
     <title>The Brothers Karamazov</title>
     <themes>
-      <theme>Children's</theme>
-      <theme>Horror</theme>
+      <theme>Romance</theme>
     </themes>
     <reading_levels>
       <level>Intermediate</level>
+    </reading_levels>
+  </book>
+  <book>
+    <title>Harry Potter</title>
+    <author>Gigel</author>
+    <themes>
+      <theme>Fantasy</theme>
+      <theme>Young Adult</theme>
+    </themes>
+    <reading_levels>
+      <level>Intermediate</level>
+      <level>Advanced</level>
     </reading_levels>
   </book>
 </books>

@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
 from django import forms
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import ollama
+from .vector_db import query_vector_db, search_by_theme_and_author
+import json
 
 from .xml_utils import *
 
@@ -141,3 +146,58 @@ def display_book_details(request, title):
         return render(request, 'books/no_book.html')
     
     return render(request, 'books/book_details.html', {'book': book})
+
+@csrf_exempt
+def chat_rag(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        user_message = data.get("message", "")
+        # Book search by theme and author
+        if "author" in user_message.lower() and "theme" in user_message.lower():
+            # naive extraction
+            import re
+            author_match = re.search(r"author ([\w\s]+)", user_message, re.IGNORECASE)
+            theme_match = re.search(r"theme ([\w\s]+)", user_message, re.IGNORECASE)
+            author = author_match.group(1).strip() if author_match else ""
+            theme = theme_match.group(1).strip() if theme_match else ""
+            books = search_by_theme_and_author(theme, author)
+            if books:
+                titles = ", ".join([b['title'] for b in books])
+                return JsonResponse({"response": f"Books by {author} with theme {theme}: {titles}"})
+            else:
+                return JsonResponse({"response": "No books found for that author and theme."})
+        # Otherwise, do RAG
+        context_books = query_vector_db(user_message)
+        # Include author in the context
+        context = "\n".join([f"Title: {b['title']}, Author: {b.get('author', '')}, Themes: {', '.join(b.get('themes', []))}, Levels: {', '.join(b.get('reading_levels', []))}" for b in context_books])
+        prompt = f"Context:\n{context}\n\nQuestion: {user_message}\n\nAnswer based strictly on the provided context:"
+        response = ollama.chat(
+            model="llama3",
+            messages=[{"role": "system", "content": "You are a book assistant. You will ONLY answer questions based on the provided context. If the information is not in the context, say you don't know."},
+                      {"role": "user", "content": prompt}]
+        )
+        answer = response['message']['content'].strip()
+        return JsonResponse({"response": answer})
+
+@csrf_exempt
+def chat_starters(request):
+    # Example: context-aware starters
+    context = request.GET.get('context', 'list')
+    book_title = request.GET.get('book_title', None)
+    starters = []
+    if context == 'book' and book_title:
+        starters = [
+            f"What is the genre of {book_title}?",
+            f"Who is the author of {book_title}?",
+            f"Can you recommend similar books to {book_title}?"
+        ]
+    else:
+        starters = [
+            "What is a book that I am most likely to enjoy from this list?",
+            "Which book matches my reading level?",
+            "Recommend a book based on my favorite theme."
+        ]
+    return JsonResponse({"starters": starters})
+
+def chatbot_page(request):
+    return render(request, 'books/chatbot_page.html')

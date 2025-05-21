@@ -28,6 +28,8 @@ urlpatterns = [
     path('book_details/<path:title>/', views.display_book_details, name = 'book_details'),
 
 
-    path('rdf-tools/', include('rdf_tools.urls')), 
+    path('rdf-tools/', include('rdf_tools.urls')),
+    path('api/chat/', include('books.urls')),
+    path('chatbot/', views.chatbot_page, name='chatbot_page'),
 
 ]
